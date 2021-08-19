@@ -1,7 +1,6 @@
 import React from 'react';
 
 const NewsCard = ({ imgUrl, source, siteUrl, title }) => {
-    console.log(imgUrl);
     return (
         <>
             <div className="card shadow-lg">

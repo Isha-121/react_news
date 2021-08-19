@@ -1,10 +1,16 @@
-// import React from 'react';
-// import CardGeneralNews from './cardGeneralNews';
+import React from 'react';
+import CardGeneralNews from './cardGeneralNews';
 
-// const index = [1, 2, 3, 4, 5, 6];
+const index = [5, 6, 7, 8];
 
-// const GeneralNews = () => {
-//     return index.map(() => {});
-// };
+const GeneralNews = () => {
+    return index.map((i) => {
+        return (
+            <>
+                <CardGeneralNews index={i} key={i} />
+            </>
+        );
+    });
+};
 
-// export default GeneralNews;
+export default GeneralNews;
