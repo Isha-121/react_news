@@ -1,7 +1,7 @@
 const topHeadlinesStyle = {
     display: 'grid',
     justifyContent: 'space-evenly',
-    gridTemplateColumns: 'repeat(6,1fr)',
+    gridTemplateColumns: 'repeat(4,1fr)',
     margin: '1em auto',
     gridGap: '1em',
 };

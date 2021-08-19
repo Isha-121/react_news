@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import NewsCard from './newsCard';
 const API_KEY = process.env.REACT_APP_API_TOP_HEADLINES;
 
-const Card = (props) => {
+const CardTopHeadline = (props) => {
     const [country, setCountry] = useState('in');
     const [source, setSource] = useState('');
     const [title, setTitle] = useState('');
@@ -25,31 +26,14 @@ const Card = (props) => {
 
     return (
         <>
-            <div className="card shadow-lg">
-                <img
-                    src={imgUrl}
-                    className="card-img-top text-center  img-thumbnail"
-                    alt={`Powered by ${source}`}
-                />
-                <div
-                    className="card-body"
-                    style={{ display: 'grid', alignContent: 'space-between' }}
-                >
-                    <div
-                        className="card-title text-justify"
-                        style={{ fontSize: '0.8em' }}
-                    >
-                        {title}
-                    </div>
-
-                    <strong className="card-subtitle">{source}</strong>
-                    <a href={siteUrl} alt="About" className="btn btn-info">
-                        Know More
-                    </a>
-                </div>
-            </div>
+            <NewsCard
+                imgUrl={imgUrl}
+                source={source}
+                title={title}
+                siteUrl={siteUrl}
+            />
         </>
     );
 };
 
-export default Card;
+export default CardTopHeadline;

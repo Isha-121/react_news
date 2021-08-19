@@ -1,4 +1,5 @@
 import React from 'react';
+import CategorialNews from './categorialNews';
 
 import Headlines from './headlines';
 import Navbar from './navbar';
