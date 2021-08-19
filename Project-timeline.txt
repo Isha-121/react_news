@@ -1,0 +1,6 @@
+1) Signup/login page Ui+ backend (isha)-within-20th aug
+2) Home page basic ui with data on cards (harsh)-within-20th aug
+3) Blogs page ui+backend (undefined!)-NA
+4) categories selection and update on db (undefined!)-NA
+5) Feedback ui+backend (undefined!)-NA
+6) about us page ui only (undefined!)-NA
