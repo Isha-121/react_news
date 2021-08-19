@@ -1,0 +1,14 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.headline-card {
+    width: 20rem !important;
+}
+
+.headlines-container {
+    display: grid !important;
+    justify-content: space-even;
+}
