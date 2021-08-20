@@ -11,7 +11,7 @@ const Headlines = () => {
                     <small style={{ color: 'whitesmoke' }}> Headlines</small>
                 </h2>
             </div>
-            <div className="headlines-container" style={topHeadlinesStyle}>
+            <div className="row">
                 <TopHeadlines />
             </div>
         </>

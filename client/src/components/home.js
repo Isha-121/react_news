@@ -2,9 +2,10 @@ import React from 'react';
 
 import Navbar from './navbar';
 import Headlines from './headlines';
-import GeneralNews from './generalNews';
 import Sidebar from './sidebar';
-import { generalNewsStyle } from './componentStyles';
+import '../style.css';
+import Thoughts from './thoughts';
+import CategorialNews from './categorialNews';
 
 const Home = () => {
     return (
@@ -12,23 +13,32 @@ const Home = () => {
             <Navbar />
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-2">
+                    <div className="col-lg-2 col-md-3 col-sm--1">
                         <Sidebar />
                     </div>
-                    <div className="col-10">
+                    <div className="col-lg-10 col-md-9 col-sm-12">
                         <Headlines />
                         <div className="headlinesHeading row text-center bg-primary">
-                            <h2 className="text-light font-weight-bold">
-                                GENERAL
-                                <small style={{ color: 'whitesmoke' }}>
+                            <h2
+                                className="font-weight-bold"
+                                style={{ color: 'red' }}
+                            >
+                                TODAY'S
+                                <small
+                                    style={{
+                                        color: 'white',
+                                        fontSize: '1.2em',
+                                    }}
+                                >
                                     {' '}
-                                    News
+                                    Thought
                                 </small>
                             </h2>
                         </div>
-                        <div style={generalNewsStyle}>
-                            <GeneralNews />
+                        <div className="contaniner-fluid row">
+                            <Thoughts />
                         </div>
+                        <CategorialNews />
                     </div>
                 </div>
             </div>

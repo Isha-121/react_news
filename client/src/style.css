@@ -1,14 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 * {
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 .headline-card {
     width: 20rem !important;
 }
 
-.headlines-container {
-    display: grid !important;
-    justify-content: space-even;
+.custom-shape-divider-bottom-1629464262 {
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1629464262 svg {
+    position: relative;
+    display: block;
+    width: calc(180% + 1.3px);
+    height: 200px;
+}
+
+.custom-shape-divider-bottom-1629464262 .shape-fill {
+    fill: rgba(0, 0, 236, 0.592);
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+    .custom-shape-divider-bottom-1629464262 svg {
+        width: calc(180% + 1.3px);
+        height: 200px;
+    }
+}
+
+.thought {
+    font-family: 'Pacifico', cursive;
 }

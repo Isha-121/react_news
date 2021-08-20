@@ -3,7 +3,7 @@ import React from 'react';
 const NewsCard = ({ imgUrl, source, siteUrl, title }) => {
     return (
         <>
-            <div className="card shadow-lg">
+            <div className="card shadow-lg col-lg-3 col-md-6 col-sm-12">
                 <img
                     src={imgUrl}
                     className="card-img-top text-center  img-thumbnail"
