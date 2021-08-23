@@ -10,7 +10,7 @@ const Thoughts = () => {
         const index = Math.floor(Math.random() * 1640);
         setThought(data[index].text);
         if (data[index].author) setAuthor(data[index].author);
-        else setAuthor('Not known');
+        else setAuthor('Anonymous');
     };
     useEffect(() => {
         getQuotes();
@@ -26,7 +26,7 @@ const Thoughts = () => {
                 }}
             >
                 <div
-                    className="thought"
+                    className="thought text-capitalise"
                     style={{
                         top: '20%',
                         textAlign: 'center',

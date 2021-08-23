@@ -9,16 +9,17 @@ const CardTopHeadline = (props) => {
     const [imgUrl, setImgUrl] = useState('');
     const [index, setIndex] = useState(0);
     const [siteUrl, setSiteUrl] = useState('');
+    const [fetchUrl, setFetchUrl] = useState('');
 
     const getHeadlinesOfCountry = async () => {
         const url = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=${country}`;
+        setFetchUrl(url);
         try {
             const res = await fetch(url);
             const { articles } = await res.json();
             setImgUrl(articles[index].urlToImage);
             setTitle(articles[index].title);
             setSource(articles[index].source.name);
-            setSiteUrl(articles[index].url);
             setIndex(props.index);
         } catch (error) {
             // throw new Error(
@@ -37,6 +38,8 @@ const CardTopHeadline = (props) => {
                 source={source}
                 title={title}
                 siteUrl={siteUrl}
+                fetchUrl={fetchUrl}
+                index={index}
             />
         </>
     );

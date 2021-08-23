@@ -11,15 +11,16 @@ const CardNewsStrip = (props) => {
     const [index, setIndex] = useState(0);
     const [siteUrl, setSiteUrl] = useState('');
     const [category, setCategory] = useState('general');
+    const [fetchUrl, setFetchUrl] = useState('');
     const getCategoryNews = async () => {
         const url = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=${country}&category=${category}`;
+        setFetchUrl(url);
         try {
             const res = await fetch(url);
             const { articles } = await res.json();
             setImgUrl(articles[index].urlToImage);
             setTitle(articles[index].title);
             setSource(articles[index].source.name);
-            setSiteUrl(articles[index].url);
             setIndex(props.index);
             setCategory(props.category);
         } catch (error) {
@@ -31,7 +32,7 @@ const CardNewsStrip = (props) => {
     };
     useEffect(() => {
         getCategoryNews();
-    }, [index]);
+    }, [index, category]);
     return (
         <>
             <NewsCard
@@ -39,6 +40,8 @@ const CardNewsStrip = (props) => {
                 source={source}
                 title={title}
                 siteUrl={siteUrl}
+                url={fetchUrl}
+                index={index}
             />
         </>
     );

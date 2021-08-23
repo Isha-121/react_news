@@ -40,6 +40,10 @@
     }
 }
 
-.thought {
+.thought,
+a {
     font-family: 'Pacifico', cursive;
+}
+temp {
+    background-image: #81c7e2;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Navbar from './navbar';
 import Headlines from './headlines';
 import Sidebar from './sidebar';
