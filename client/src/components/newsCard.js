@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const NewsCard = ({ imgUrl, source, siteUrl, title }) => {
-    console.log(imgUrl);
+import DetailedNews from './detailedNews';
+
+const NewsCard = ({ imgUrl, source, fetchUrl, title, index }) => {
+    const [content, setContent] = useState('Loading...');
+    const [publishDate, setPublishDate] = useState('Loading...');
+    const [author, setAuthor] = useState('Loading...');
+    const getDetails = async () => {
+        try {
+            const res = await fetch(fetchUrl);
+            const { articles } = await res.json();
+            setContent(articles[index].content);
+            setPublishDate(articles[index].publishedAt);
+            setAuthor(articles[index].author);
+        } catch (error) {
+            console.log("Today's request limit exceeded, try after 24 hours");
+        }
+    };
+    const showDetails = () => {
+        document.getElementById('detailedNews').style.display = 'block';
+    };
+
+    useEffect(() => {
+        getDetails();
+        // return () => {
+        //     setAuthor('');
+        //     setContent('');
+        //     setPublishDate('');
+        // };
+    }, [index, publishDate, author]);
     return (
         <>
-            <div className="card shadow-lg">
+            <div className="card shadow-lg col-lg-3 col-md-6 col-sm-12">
                 <img
                     src={imgUrl}
                     className="card-img-top text-center  img-thumbnail"
@@ -22,14 +50,21 @@ const NewsCard = ({ imgUrl, source, siteUrl, title }) => {
                     </div>
 
                     <strong className="card-subtitle">{source}</strong>
-                    <a
-                        href={siteUrl}
-                        target="_blank"
-                        alt="About"
+                    <div
                         className="btn btn-info"
+                        onClick={() => {
+                            showDetails();
+                            getDetails();
+                        }}
                     >
                         Know More
-                    </a>
+                    </div>
+                    <DetailedNews
+                        content={content}
+                        publishDate={publishDate}
+                        author={author}
+                        style={{ display: 'none' }}
+                    />
                 </div>
             </div>
         </>

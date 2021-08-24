@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import NewsCard from './newsCard';
+
 const API_KEY = process.env.REACT_APP_API_TOP_HEADLINES;
 
-const CardTopHeadline = (props) => {
+const CardNewsStrip = (props) => {
     const [country, setCountry] = useState('in');
     const [source, setSource] = useState('');
     const [title, setTitle] = useState('');
     const [imgUrl, setImgUrl] = useState('');
     const [index, setIndex] = useState(0);
     const [siteUrl, setSiteUrl] = useState('');
+    const [category, setCategory] = useState('general');
     const [fetchUrl, setFetchUrl] = useState('');
-
-    const getHeadlinesOfCountry = async () => {
-        const url = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=${country}`;
+    const getCategoryNews = async () => {
+        const url = `https://newsapi.org/v2/top-headlines?apiKey=${API_KEY}&country=${country}&category=${category}`;
         setFetchUrl(url);
         try {
             const res = await fetch(url);
@@ -21,6 +22,7 @@ const CardTopHeadline = (props) => {
             setTitle(articles[index].title);
             setSource(articles[index].source.name);
             setIndex(props.index);
+            setCategory(props.category);
         } catch (error) {
             // throw new Error(
             //     "Today's request limit exceeded, try after 24 hours"
@@ -29,8 +31,8 @@ const CardTopHeadline = (props) => {
         }
     };
     useEffect(() => {
-        getHeadlinesOfCountry();
-    }, [index]);
+        getCategoryNews();
+    }, [index, category]);
     return (
         <>
             <NewsCard
@@ -38,11 +40,11 @@ const CardTopHeadline = (props) => {
                 source={source}
                 title={title}
                 siteUrl={siteUrl}
-                fetchUrl={fetchUrl}
+                url={fetchUrl}
                 index={index}
             />
         </>
     );
 };
 
-export default CardTopHeadline;
+export default CardNewsStrip;

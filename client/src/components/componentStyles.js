@@ -6,6 +6,14 @@ const topHeadlinesStyle = {
     gridGap: '1em',
 };
 
+const generalNewsStyle = {
+    display: 'grid',
+    justifyContent: 'space-evenly',
+    gridTemplateColumns: 'repeat(4,1fr)',
+    margin: '1em auto',
+    gridGap: '1em',
+};
+
 const errorImgStyle = {
     img: {
         width: '70vw',
@@ -15,4 +23,4 @@ const errorImgStyle = {
     },
 };
 
-module.exports = { topHeadlinesStyle, errorImgStyle };
+module.exports = { topHeadlinesStyle, generalNewsStyle, errorImgStyle };

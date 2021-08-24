@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = (index) => {
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const handleScroll = () => {
+        const position = 500.0;
+        setScrollPosition(position);
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
         <>
             <nav
@@ -54,41 +66,53 @@ const Navbar = () => {
                                     }
                                 >
                                     <button
-                                        className="btn btn-secondary dropdown-toggle"
+                                        className="btn btn-outline-primary dropdown-toggle"
                                         type="button"
                                         id="dropdownMenuButton1"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false"
+                                        onClick={() => handleScroll()}
                                     >
-                                        Dropdown button
+                                        Select Categories
                                     </button>
                                     <ul
                                         className="dropdown-menu"
                                         aria-labelledby="dropdownMenuButton1"
                                     >
                                         <li>
-                                            <a
-                                                className="dropdown-item"
-                                                href="#"
-                                            >
-                                                Action
-                                            </a>
+                                            <div className="dropdown-item">
+                                                General
+                                            </div>
                                         </li>
                                         <li>
-                                            <a
-                                                className="dropdown-item"
-                                                href="#"
-                                            >
-                                                Another action
-                                            </a>
+                                            <div className="dropdown-item">
+                                                Bussiness
+                                            </div>
                                         </li>
                                         <li>
-                                            <a
-                                                className="dropdown-item"
-                                                href="#"
-                                            >
-                                                Something else here
-                                            </a>
+                                            <div className="dropdown-item">
+                                                Health
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="dropdown-item">
+                                                Entertainment
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="dropdown-item">
+                                                Sports
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="dropdown-item">
+                                                Science
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div className="dropdown-item">
+                                                Technology
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>
