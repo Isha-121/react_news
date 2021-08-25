@@ -8,7 +8,6 @@ const CardTopHeadline = (props) => {
     const [title, setTitle] = useState('');
     const [imgUrl, setImgUrl] = useState('');
     const [index, setIndex] = useState(0);
-    const [siteUrl, setSiteUrl] = useState('');
     const [fetchUrl, setFetchUrl] = useState('');
 
     const getHeadlinesOfCountry = async () => {
@@ -37,7 +36,6 @@ const CardTopHeadline = (props) => {
                 imgUrl={imgUrl}
                 source={source}
                 title={title}
-                siteUrl={siteUrl}
                 fetchUrl={fetchUrl}
                 index={index}
             />

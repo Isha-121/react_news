@@ -9,7 +9,6 @@ const CardNewsStrip = (props) => {
     const [title, setTitle] = useState('');
     const [imgUrl, setImgUrl] = useState('');
     const [index, setIndex] = useState(0);
-    const [siteUrl, setSiteUrl] = useState('');
     const [category, setCategory] = useState('general');
     const [fetchUrl, setFetchUrl] = useState('');
     const getCategoryNews = async () => {
@@ -39,8 +38,7 @@ const CardNewsStrip = (props) => {
                 imgUrl={imgUrl}
                 source={source}
                 title={title}
-                siteUrl={siteUrl}
-                url={fetchUrl}
+                fetchUrl={fetchUrl}
                 index={index}
             />
         </>

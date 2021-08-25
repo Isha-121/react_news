@@ -1,19 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = (index) => {
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const handleScroll = () => {
-        const position = 500.0;
-        setScrollPosition(position);
-    };
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    const [goDark, setGoDark] = useState(true);
     return (
         <>
             <nav
@@ -43,7 +32,7 @@ const Navbar = (index) => {
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link
-                                    className="nav-link active"
+                                    className="nav-link active text-colot"
                                     aria-current="page"
                                     to="/"
                                 >
@@ -66,12 +55,11 @@ const Navbar = (index) => {
                                     }
                                 >
                                     <button
-                                        className="btn btn-outline-primary dropdown-toggle"
+                                        className="btn btn-primary dropdown-toggle"
                                         type="button"
                                         id="dropdownMenuButton1"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false"
-                                        onClick={() => handleScroll()}
                                     >
                                         Select Categories
                                     </button>
@@ -130,7 +118,11 @@ const Navbar = (index) => {
                                 // style={{ width: '33vw' }}
                             />
                             <button
-                                className="btn btn-outline-success"
+                                className={
+                                    goDark
+                                        ? 'btn btn-outline-success'
+                                        : 'btn btn-success'
+                                }
                                 type="submit"
                             >
                                 Search
@@ -149,7 +141,11 @@ const Navbar = (index) => {
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-outline-success"
+                                className={
+                                    goDark
+                                        ? 'btn btn-outline-success'
+                                        : 'btn-success'
+                                }
                             >
                                 Sign-Up
                             </button>
@@ -161,9 +157,17 @@ const Navbar = (index) => {
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-outline-dark"
+                                className={
+                                    goDark
+                                        ? 'btn btn-outline-dark'
+                                        : 'btn btn-light'
+                                }
+                                onClick={() => {
+                                    document.body.classList.toggle('dark-mode');
+                                    setGoDark(goDark ? false : true);
+                                }}
                             >
-                                Toggle Theme
+                                {goDark ? 'Go Dracula🚀' : 'Go Normal🎇'}
                             </button>
                         </div>
                     </div>

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Sidebar = () => {
     return (
         <>
             <div
-                className="row"
+                className="row sidebar"
                 style={{
                     position: 'sticky',
                     top: '0',
@@ -39,13 +39,14 @@ const Sidebar = () => {
                                     href="https://github.com/isha-121/"
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="contributors"
                                     style={{
                                         textDecoration: 'none',
                                         color: 'black',
                                         fontSize: '1.2em',
                                     }}
                                 >
-                                    Shah Isha
+                                    Isha Shah
                                 </a>
                             </li>
                             <li>
@@ -53,6 +54,7 @@ const Sidebar = () => {
                                     href="https://github.com/harshmetkel24/"
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    className="contributors"
                                     style={{
                                         textDecoration: 'none',
                                         color: 'black',

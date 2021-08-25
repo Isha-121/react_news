@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import DetailedNews from './detailedNews';
 
@@ -8,18 +7,23 @@ const NewsCard = ({ imgUrl, source, fetchUrl, title, index }) => {
     const [publishDate, setPublishDate] = useState('Loading...');
     const [author, setAuthor] = useState('Loading...');
     const getDetails = async () => {
-        try {
-            const res = await fetch(fetchUrl);
-            const { articles } = await res.json();
-            setContent(articles[index].content);
-            setPublishDate(articles[index].publishedAt);
-            setAuthor(articles[index].author);
-        } catch (error) {
-            console.log("Today's request limit exceeded, try after 24 hours");
-        }
+        // try {
+        const res = await fetch(fetchUrl);
+        const { articles } = await res.json();
+        setContent(articles[index].content);
+        setPublishDate(articles[index].publishedAt);
+        setAuthor(
+            articles[index].author ? articles[index].author : 'Anonymous'
+        );
+        // } catch (error) {
+        //     console.log("Today's request limit exceeded, try after 24 hours");
+        // }
     };
     const showDetails = () => {
         document.getElementById('detailedNews').style.display = 'block';
+        document.getElementById('description-text').innerHTML = content;
+        document.getElementById('date').innerHTML = publishDate;
+        document.getElementById('author').innerHTML = author;
     };
 
     useEffect(() => {
@@ -53,8 +57,8 @@ const NewsCard = ({ imgUrl, source, fetchUrl, title, index }) => {
                     <div
                         className="btn btn-info"
                         onClick={() => {
-                            showDetails();
                             getDetails();
+                            showDetails();
                         }}
                     >
                         Know More

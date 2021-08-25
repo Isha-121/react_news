@@ -1,7 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DetailedNews = ({ content, author, publishDate }) => {
-    useEffect(() => {}, [content, author, publishDate]);
+    const [contentN, setContentN] = useState('');
+    const [authorN, setAuthorN] = useState('');
+    const [publishedDate, setPublishedDate] = useState('');
+
+    useEffect(() => {
+        setContentN(content);
+        setAuthorN(author);
+        setPublishedDate(publishDate);
+    }, []);
+
     return (
         <>
             <div
@@ -43,6 +52,7 @@ const DetailedNews = ({ content, author, publishDate }) => {
                 </div>
                 <div
                     className="description-text p-2 rounded shadow-lg"
+                    id="description-text"
                     style={{
                         textAlign: 'justify',
                         fontSize: '1.2em',
@@ -50,7 +60,7 @@ const DetailedNews = ({ content, author, publishDate }) => {
                             'linear-gradient(145deg,white, pink, #81c7e2 , pink,white)',
                     }}
                 >
-                    {content ? content : 'loading'}
+                    {contentN ? contentN : 'Oops! content not available'}
                 </div>
                 <div
                     className="row"
@@ -59,8 +69,12 @@ const DetailedNews = ({ content, author, publishDate }) => {
                         fontSize: '1.2em',
                     }}
                 >
-                    <div className="col-6">Published at: {publishDate}</div>
-                    <div className="col-6">Author: {author}</div>
+                    <div className="col-6" id="date">
+                        Published at: {publishedDate}
+                    </div>
+                    <div className="col-6" id="author">
+                        Author: {authorN}
+                    </div>
                 </div>
             </div>
         </>
